@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Athletics Carnival Demo — Riverside Primary · SportCarnival</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f0f4f8; color: #0f172a; line-height: 1.5; }
+  .demo-banner { background: #f59e0b; color: #0d1b3e; text-align: center; padding: 10px 16px; font-size: 13px; font-weight: 700; }
+  .demo-banner a { color: #0d1b3e; text-decoration: underline; }
+  .site-header { background: linear-gradient(135deg, #0d1b3e 0%, #1a3a6e 60%, #1a56db 100%); color: #fff; padding: 40px 24px 48px; text-align: center; }
+  .header-badge { display: inline-block; background: rgba(245,158,11,.15); border: 1px solid rgba(245,158,11,.4); color: #f59e0b; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: 4px 12px; border-radius: 20px; margin-bottom: 12px; }
+  .site-header h1 { font-size: clamp(22px, 5vw, 34px); font-weight: 900; letter-spacing: -.02em; }
+  .site-header p { font-size: 14px; opacity: .72; max-width: 520px; margin: 6px auto 0; }
+  .container { max-width: 960px; margin: 0 auto; padding: 0 20px; }
+  .section { margin: 36px 0; }
+  .section-title { font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: #64748b; margin-bottom: 12px; padding-bottom: 6px; border-bottom: 2px solid #e2e8f0; }
+  .card { background: #fff; border-radius: 14px; padding: 20px 22px; box-shadow: 0 2px 10px rgba(0,0,0,.07); margin-bottom: 14px; }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; }
+  .stat { background: #fff; padding: 18px; border-radius: 12px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,.06); }
+  .stat .num { font-size: 28px; font-weight: 900; color: #1a56db; }
+  .stat .lab { font-size: 11px; color: #64748b; text-transform: uppercase; letter-spacing: .08em; margin-top: 4px; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th { text-align: left; padding: 10px 8px; color: #64748b; font-size: 11px; text-transform: uppercase; letter-spacing: .06em; border-bottom: 2px solid #e2e8f0; }
+  td { padding: 10px 8px; border-bottom: 1px solid #f1f5f9; }
+  tr:hover td { background: #f8fafc; }
+  .place { font-weight: 900; color: #1a56db; width: 40px; }
+  .place.gold { color: #d97706; }
+  .place.silver { color: #64748b; }
+  .place.bronze { color: #b45309; }
+  .house-pill { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight: 700; }
+  .h-red { background: #fee2e2; color: #b91c1c; }
+  .h-blue { background: #dbeafe; color: #1d4ed8; }
+  .h-green { background: #d1fae5; color: #047857; }
+  .h-yellow { background: #fef3c7; color: #a16207; }
+  .house-lead { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 12px; }
+  .house-lead .hc { padding: 14px; border-radius: 12px; text-align: center; color: #fff; }
+  .house-lead .hc .pts { font-size: 26px; font-weight: 900; }
+  .house-lead .hc .nm { font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; opacity: .85; margin-top: 3px; }
+  .house-lead .red { background: #dc2626; } .house-lead .blue { background: #2563eb; } .house-lead .green { background: #059669; } .house-lead .yellow { background: #d97706; }
+  .heat-box { background: #fafaf9; border: 1px solid #e7e5e4; border-radius: 10px; padding: 14px 16px; margin-bottom: 10px; }
+  .heat-label { font-size: 11px; color: #64748b; text-transform: uppercase; letter-spacing: .06em; font-weight: 700; margin-bottom: 6px; }
+  .lane-row { display: flex; align-items: center; gap: 10px; padding: 6px 0; font-size: 13px; }
+  .lane-num { width: 22px; height: 22px; border-radius: 50%; background: #e2e8f0; color: #0f172a; font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .record-flag { display: inline-block; background: #fef3c7; color: #a16207; padding: 2px 6px; border-radius: 4px; font-size: 10px; font-weight: 700; margin-left: 6px; }
+  .back { display: inline-block; margin-top: 30px; color: #1a56db; text-decoration: none; font-size: 13px; font-weight: 700; }
+  .site-footer { background: #0d1b3e; color: rgba(255,255,255,.45); text-align: center; padding: 22px; font-size: 12px; margin-top: 50px; }
+  @media (max-width: 600px) { .house-lead { grid-template-columns: repeat(2, 1fr); } }
+</style>
+</head>
+<body>
+<div class="demo-banner">📍 DEMO CARNIVAL — fictional data, fictional school. Real carnival pages are unlisted, visible only to logged-in staff. <a href="https://schoolsportportal.com.au/demo-school">← Back to demo school</a></div>
+
+<header class="site-header">
+  <div class="header-badge">🏃 Athletics Carnival · Term 2 2026</div>
+  <h1>Riverside Primary Athletics Carnival</h1>
+  <p>A live sample of a full athletics carnival day — heat draws, live results, records, and house points. All names are fictional.</p>
+</header>
+
+<main class="container">
+
+  <div class="section">
+    <p class="section-title">Carnival at a Glance</p>
+    <div class="stats">
+      <div class="stat"><div class="num">186</div><div class="lab">Students</div></div>
+      <div class="stat"><div class="num">24</div><div class="lab">Events</div></div>
+      <div class="stat"><div class="num">56</div><div class="lab">Heats</div></div>
+      <div class="stat"><div class="num">3</div><div class="lab">New records</div></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <p class="section-title">House Points — Live</p>
+    <div class="house-lead">
+      <div class="hc red"><div class="pts">412</div><div class="nm">🔴 Ramsay</div></div>
+      <div class="hc blue"><div class="pts">388</div><div class="nm">🔵 Hume</div></div>
+      <div class="hc green"><div class="pts">341</div><div class="nm">🟢 Chisholm</div></div>
+      <div class="hc yellow"><div class="pts">329</div><div class="nm">🟡 Batman</div></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <p class="section-title">Sample Event — Girls 11 100m Final</p>
+    <div class="card">
+      <div class="heat-label">Final · Track 1 · 10:42am · 8 lanes</div>
+      <table>
+        <thead><tr><th>#</th><th>Athlete</th><th>House</th><th>Time</th></tr></thead>
+        <tbody>
+          <tr><td class="place gold">1</td><td>Isla M. · Riverside Primary</td><td><span class="house-pill h-red">Ramsay</span></td><td>14.82 <span class="record-flag">SCHOOL REC</span></td></tr>
+          <tr><td class="place silver">2</td><td>Harper W. · Riverside Primary</td><td><span class="house-pill h-blue">Hume</span></td><td>15.17</td></tr>
+          <tr><td class="place bronze">3</td><td>Olivia T. · Riverside Primary</td><td><span class="house-pill h-green">Chisholm</span></td><td>15.44</td></tr>
+          <tr><td class="place">4</td><td>Zara B. · Riverside Primary</td><td><span class="house-pill h-yellow">Batman</span></td><td>15.71</td></tr>
+          <tr><td class="place">5</td><td>Ava P. · Riverside Primary</td><td><span class="house-pill h-red">Ramsay</span></td><td>15.88</td></tr>
+          <tr><td class="place">6</td><td>Mia R. · Riverside Primary</td><td><span class="house-pill h-blue">Hume</span></td><td>16.03</td></tr>
+          <tr><td class="place">7</td><td>Grace D. · Riverside Primary</td><td><span class="house-pill h-green">Chisholm</span></td><td>16.29</td></tr>
+          <tr><td class="place">8</td><td>Scarlett K. · Riverside Primary</td><td><span class="house-pill h-yellow">Batman</span></td><td>16.41</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:12px;color:#64748b;padding:0 4px;">Public view: first name + last initial + school. Full names and DOBs are stored securely and are only visible to signed-in staff.</p>
+  </div>
+
+  <div class="section">
+    <p class="section-title">Sample Heat Draw — Boys 12+ Long Jump</p>
+    <div class="card">
+      <div class="heat-box">
+        <div class="heat-label">Flight 1 · Pit A · 11:00am</div>
+        <div class="lane-row"><div class="lane-num">1</div><div>Hudson P. · Riverside Primary</div><span class="house-pill h-red">Ramsay</span></div>
+        <div class="lane-row"><div class="lane-num">2</div><div>Noah L. · Riverside Primary</div><span class="house-pill h-blue">Hume</span></div>
+        <div class="lane-row"><div class="lane-num">3</div><div>Oliver S. · Riverside Primary</div><span class="house-pill h-green">Chisholm</span></div>
+        <div class="lane-row"><div class="lane-num">4</div><div>Leo V. · Riverside Primary</div><span class="house-pill h-yellow">Batman</span></div>
+      </div>
+      <div class="heat-box">
+        <div class="heat-label">Flight 2 · Pit A · 11:20am</div>
+        <div class="lane-row"><div class="lane-num">1</div><div>Jack T. · Riverside Primary</div><span class="house-pill h-red">Ramsay</span></div>
+        <div class="lane-row"><div class="lane-num">2</div><div>Ethan C. · Riverside Primary</div><span class="house-pill h-blue">Hume</span></div>
+        <div class="lane-row"><div class="lane-num">3</div><div>Liam G. · Riverside Primary</div><span class="house-pill h-green">Chisholm</span></div>
+        <div class="lane-row"><div class="lane-num">4</div><div>Henry F. · Riverside Primary</div><span class="house-pill h-yellow">Batman</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <p class="section-title">Top 10 Performances Today</p>
+    <div class="card">
+      <table>
+        <thead><tr><th>#</th><th>Athlete</th><th>Event</th><th>Result</th></tr></thead>
+        <tbody>
+          <tr><td class="place">1</td><td>Isla M. · Riverside Primary</td><td>Girls 11 100m</td><td>14.82 <span class="record-flag">REC</span></td></tr>
+          <tr><td class="place">2</td><td>Hudson P. · Riverside Primary</td><td>Boys 12+ Long Jump</td><td>4.82m <span class="record-flag">REC</span></td></tr>
+          <tr><td class="place">3</td><td>Noah L. · Riverside Primary</td><td>Boys 12+ 200m</td><td>29.14 <span class="record-flag">REC</span></td></tr>
+          <tr><td class="place">4</td><td>Harper W. · Riverside Primary</td><td>Girls 11 Long Jump</td><td>3.94m</td></tr>
+          <tr><td class="place">5</td><td>Oliver S. · Riverside Primary</td><td>Boys 11 Shot Put</td><td>7.88m</td></tr>
+          <tr><td class="place">6</td><td>Olivia T. · Riverside Primary</td><td>Girls 10 800m</td><td>3:02.4</td></tr>
+          <tr><td class="place">7</td><td>Leo V. · Riverside Primary</td><td>Boys 10 High Jump</td><td>1.22m</td></tr>
+          <tr><td class="place">8</td><td>Mia R. · Riverside Primary</td><td>Girls 9 Discus</td><td>14.2m</td></tr>
+          <tr><td class="place">9</td><td>Ethan C. · Riverside Primary</td><td>Boys 9 60m</td><td>10.21</td></tr>
+          <tr><td class="place">10</td><td>Zara B. · Riverside Primary</td><td>Girls 11 200m</td><td>31.74</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="section">
+    <p class="section-title">How this demo works</p>
+    <div class="card">
+      <p><strong>This is what your carnival page looks like.</strong> Students are entered once at the start of the term (CSV, spreadsheet, or Compass export). On carnival day, timers tap results on their phones and this page updates live. House points auto-tally. School and district records flag automatically.</p>
+      <p style="margin-top:10px;"><strong>Privacy:</strong> This public view shows first name + last initial + school only. DOB never appears. Staff signed in to their own school see full names internally. Full privacy spec on <a href="https://sportportal.com.au/#privacy" style="color:#1a56db;">sportportal.com.au</a>.</p>
+      <p style="margin-top:10px;"><strong>Real district? Real schools?</strong> On the live platform, the top 4 per event auto-nominate to the district carnival — no extra paperwork.</p>
+    </div>
+    <a class="back" href="https://schoolsportportal.com.au/demo-school">← Back to demo school page</a>
+  </div>
+
+</main>
+
+<footer class="site-footer">sportcarnival.com.au/demo-school/athletics · fictional data · Built by Paddy Gallivan · 10 16 Pty Ltd</footer>
+</body>
+</html>
