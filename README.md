@@ -10,3 +10,5 @@ Source for the SportCarnival tool — part of the 4-domain SportPortal platform.
 - `vercel.json` — route rewrites
 
 Real carnival pages for paying schools go behind login in the next phase. For now, direct URLs show a login prompt.
+
+<!-- trigger deploy: 1776943265 -->
