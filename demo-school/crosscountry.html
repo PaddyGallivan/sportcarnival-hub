@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cross Country Demo — Riverside Primary · SportCarnival</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f0f4f8; color: #0f172a; line-height: 1.5; }
+  .demo-banner { background: #f59e0b; color: #0d1b3e; text-align: center; padding: 10px 16px; font-size: 13px; font-weight: 700; }
+  .demo-banner a { color: #0d1b3e; text-decoration: underline; }
+  .site-header { background: linear-gradient(135deg, #064e3b 0%, #047857 60%, #10b981 100%); color: #fff; padding: 40px 24px 48px; text-align: center; }
+  .header-badge { display: inline-block; background: rgba(16,185,129,.2); border: 1px solid rgba(16,185,129,.5); color: #d1fae5; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: 4px 12px; border-radius: 20px; margin-bottom: 12px; }
+  .site-header h1 { font-size: clamp(22px, 5vw, 34px); font-weight: 900; letter-spacing: -.02em; }
+  .site-header p { font-size: 14px; opacity: .82; max-width: 520px; margin: 6px auto 0; }
+  .container { max-width: 960px; margin: 0 auto; padding: 0 20px; }
+  .section { margin: 36px 0; }
+  .section-title { font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: #64748b; margin-bottom: 12px; padding-bottom: 6px; border-bottom: 2px solid #e2e8f0; }
+  .card { background: #fff; border-radius: 14px; padding: 20px 22px; box-shadow: 0 2px 10px rgba(0,0,0,.07); margin-bottom: 14px; }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; }
+  .stat { background: #fff; padding: 18px; border-radius: 12px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,.06); }
+  .stat .num { font-size: 28px; font-weight: 900; color: #047857; }
+  .stat .lab { font-size: 11px; color: #64748b; text-transform: uppercase; letter-spacing: .08em; margin-top: 4px; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th { text-align: left; padding: 10px 8px; color: #64748b; font-size: 11px; text-transform: uppercase; letter-spacing: .06em; border-bottom: 2px solid #e2e8f0; }
+  td { padding: 10px 8px; border-bottom: 1px solid #f1f5f9; }
+  .place { font-weight: 900; color: #047857; width: 40px; }
+  .place.gold { color: #d97706; } .place.silver { color: #64748b; } .place.bronze { color: #b45309; }
+  .house-pill { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight: 700; }
+  .h-red { background: #fee2e2; color: #b91c1c; } .h-blue { background: #dbeafe; color: #1d4ed8; } .h-green { background: #d1fae5; color: #047857; } .h-yellow { background: #fef3c7; color: #a16207; }
+  .house-lead { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 12px; }
+  .house-lead .hc { padding: 14px; border-radius: 12px; text-align: center; color: #fff; }
+  .house-lead .hc .pts { font-size: 26px; font-weight: 900; }
+  .house-lead .hc .nm { font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; opacity: .85; margin-top: 3px; }
+  .house-lead .red { background: #dc2626; } .house-lead .blue { background: #2563eb; } .house-lead .green { background: #059669; } .house-lead .yellow { background: #d97706; }
+  .course-box { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 10px; padding: 16px; margin-bottom: 10px; display: flex; gap: 14px; align-items: center; }
+  .course-box .ic { font-size: 30px; flex-shrink: 0; }
+  .course-box strong { font-size: 14px; }
+  .course-box p { font-size: 12px; color: #047857; margin-top: 2px; }
+  .back { display: inline-block; margin-top: 30px; color: #047857; text-decoration: none; font-size: 13px; font-weight: 700; }
+  .site-footer { background: #0d1b3e; color: rgba(255,255,255,.45); text-align: center; padding: 22px; font-size: 12px; margin-top: 50px; }
+  @media (max-width: 600px) { .house-lead { grid-template-columns: repeat(2, 1fr); } }
+</style>
+</head>
+<body>
+<div class="demo-banner">📍 DEMO CARNIVAL — fictional data, fictional school. Real carnival pages are unlisted, visible only to logged-in staff. <a href="https://schoolsportportal.com.au/demo-school">← Back to demo school</a></div>
+
+<header class="site-header">
+  <div class="header-badge">🌲 Cross Country · Term 2 2026</div>
+  <h1>Riverside Primary Cross Country</h1>
+  <p>Sample cross country carnival — mass-start finish order, age-group results, district qualifiers auto-flagged. All names fictional.</p>
+</header>
+
+<main class="container">
+
+  <div class="section">
+    <p class="section-title">Carnival at a Glance</p>
+    <div class="stats">
+      <div class="stat"><div class="num">198</div><div class="lab">Runners</div></div>
+      <div class="stat"><div class="num">10</div><div class="lab">Age-group races</div></div>
+      <div class="stat"><div class="num">2.0 km</div><div class="lab">Course</div></div>
+      <div class="stat"><div class="num">40</div><div class="lab">District qualifiers</div></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <p class="section-title">Course</p>
+    <div class="card">
+      <div class="course-box">
+        <span class="ic">🌲</span>
+        <div>
+          <strong>Riverside Reserve, 2.0 km loop</strong>
+          <p>Grass + path · flat · 1 lap for under 10, 2 laps for 11+ · timing by FinishLine tap-finish</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <p class="section-title">House Points — Final</p>
+    <div class="house-lead">
+      <div class="hc green"><div class="pts">294</div><div class="nm">🟢 Chisholm</div></div>
+      <div class="hc red"><div class="pts">268</div><div class="nm">🔴 Ramsay</div></div>
+      <div class="hc blue"><div class="pts">242</div><div class="nm">🔵 Hume</div></div>
+      <div class="hc yellow"><div class="pts">221</div><div class="nm">🟡 Batman</div></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <p class="section-title">Girls 11 · Top 10 Finishers</p>
+    <div class="card">
+      <table>
+        <thead><tr><th>#</th><th>Runner</th><th>House</th><th>Time</th><th></th></tr></thead>
+        <tbody>
+          <tr><td class="place gold">1</td><td>Freya L. · Riverside Primary</td><td><span class="house-pill h-green">Chisholm</span></td><td>8:14</td><td>🎯 Qualifier</td></tr>
+          <tr><td class="place silver">2</td><td>Matilda H. · Riverside Primary</td><td><span class="house-pill h-red">Ramsay</span></td><td>8:22</td><td>🎯 Qualifier</td></tr>
+          <tr><td class="place bronze">3</td><td>Ayla B. · Riverside Primary</td><td><span class="house-pill h-blue">Hume</span></td><td>8:38</td><td>🎯 Qualifier</td></tr>
+          <tr><td class="place">4</td><td>Clara W. · Riverside Primary</td><td><span class="house-pill h-green">Chisholm</span></td><td>8:51</td><td>🎯 Qualifier</td></tr>
+          <tr><td class="place">5</td><td>Nora P. · Riverside Primary</td><td><span class="house-pill h-yellow">Batman</span></td><td>9:04</td><td></td></tr>
+          <tr><td class="place">6</td><td>Tess M. · Riverside Primary</td><td><span class="house-pill h-red">Ramsay</span></td><td>9:12</td><td></td></tr>
+          <tr><td class="place">7</td><td>Josie R. · Riverside Primary</td><td><span class="house-pill h-blue">Hume</span></td><td>9:28</td><td></td></tr>
+          <tr><td class="place">8</td><td>Maya T. · Riverside Primary</td><td><span class="house-pill h-green">Chisholm</span></td><td>9:41</td><td></td></tr>
+          <tr><td class="place">9</td><td>Ella S. · Riverside Primary</td><td><span class="house-pill h-yellow">Batman</span></td><td>9:49</td><td></td></tr>
+          <tr><td class="place">10</td><td>Piper N. · Riverside Primary</td><td><span class="house-pill h-red">Ramsay</span></td><td>9:56</td><td></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:12px;color:#64748b;padding:0 4px;">Top 4 per age-group auto-qualify to district. Export the nomination form with one click.</p>
+  </div>
+
+  <div class="section">
+    <p class="section-title">Boys 12+ · Top 10 Finishers</p>
+    <div class="card">
+      <table>
+        <thead><tr><th>#</th><th>Runner</th><th>House</th><th>Time</th><th></th></tr></thead>
+        <tbody>
+          <tr><td class="place gold">1</td><td>Xavier K. · Riverside Primary</td><td><span class="house-pill h-green">Chisholm</span></td><td>7:41</td><td>🎯 Qualifier</td></tr>
+          <tr><td class="place silver">2</td><td>Archie D. · Riverside Primary</td><td><span class="house-pill h-red">Ramsay</span></td><td>7:52</td><td>🎯 Qualifier</td></tr>
+          <tr><td class="place bronze">3</td><td>Declan V. · Riverside Primary</td><td><span class="house-pill h-blue">Hume</span></td><td>8:03</td><td>🎯 Qualifier</td></tr>
+          <tr><td class="place">4</td><td>Charlie G. · Riverside Primary</td><td><span class="house-pill h-yellow">Batman</span></td><td>8:14</td><td>🎯 Qualifier</td></tr>
+          <tr><td class="place">5</td><td>Felix O. · Riverside Primary</td><td><span class="house-pill h-green">Chisholm</span></td><td>8:22</td><td></td></tr>
+          <tr><td class="place">6</td><td>Theo A. · Riverside Primary</td><td><span class="house-pill h-red">Ramsay</span></td><td>8:33</td><td></td></tr>
+          <tr><td class="place">7</td><td>Roman J. · Riverside Primary</td><td><span class="house-pill h-blue">Hume</span></td><td>8:48</td><td></td></tr>
+          <tr><td class="place">8</td><td>Angus E. · Riverside Primary</td><td><span class="house-pill h-yellow">Batman</span></td><td>8:55</td><td></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <a class="back" href="https://schoolsportportal.com.au/demo-school">← Back to demo school page</a>
+</main>
+
+<footer class="site-footer">sportcarnival.com.au/demo-school/crosscountry · fictional data · Built by Paddy Gallivan · 10 16 Pty Ltd</footer>
+</body>
+</html>
