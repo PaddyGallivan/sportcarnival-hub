@@ -1,0 +1,5 @@
+--a7dc15e7fb350f76a7ac5a1fb3bca67679a53968e4a514b1f3fa69b9e708
+Content-Disposition: form-data; name="main.js"
+
+export default { fetch() { return new Response("Assets have not yet been deployed...") } }
+--a7dc15e7fb350f76a7ac5a1fb3bca67679a53968e4a514b1f3fa69b9e708--
